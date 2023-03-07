@@ -1,172 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta id="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">
-    </script>
-    <style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta id="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">
+  </script>
+  <style>
+    .container2 {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
 
-        h1{
-            display: flex;
-            justify-content: center;    
-        }
+    .table-fill {
+      width: 70%;
+      background-color: white;
+      border-collapse: collapse;
+      height: 320px;
+      overflow-y: auto;
+    }
 
-        	form {
-			max-width: 500px;
-			margin: 0 auto;
-		}
-		input {
-			width: 100%;
-			padding: 12px;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			box-sizing: border-box;
-			margin-top: 6px;
-			margin-bottom: 16px;
-			resize: vertical;
-		}
-		button {
-			background-color: #4CAF50;
-			color: white;
-			padding: 12px 20px;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-		}
-		button:hover {
-			background-color: #45a049;
-		}
-        form {
-          max-width: 500px;
-        }
-    </style>
+    .table-fill th,
+    .table-fill td {
+      color: #555555;
+      border: 1px solid #e8e8e8;
+      padding: 12px;
+      vertical-align: middle;
+    }
+
+    .table-fill th {
+      background: #d3f1ff;
+      font-weight: bold;
+    }
+
+    .table-fill tbody tr:hover {
+      background-color: #f6f6f6;
+    }
+
+    .text-left {
+      text-align: left;
+    }
+
+    /* Estilos generales */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #076391;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 26px;
+      color: #fff;
+    }
+
+    /* Estilos del formulario */
+    .container {
+      margin: 0 auto;
+      width: 50%;
+      max-width: 600px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .container div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .container span {
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .container input[type="text"],
+    .container input[type="number"],
+    .container input[type="file"] {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 18px;
+      background-color: #c4ebfd;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.2s ease-in-out;
+    }
+
+    .container input[type="text"]:focus,
+    .container input[type="number"]:focus,
+    .container input[type="file"]:focus {
+      outline: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .container input[type="file"] {
+      padding: 15px 10px;
+      text-align: center;
+      color: #777;
+    }
+
+    .container button {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      background-color: #58ace4;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .container button:hover {
+      background-color: #0d6af5;
+    }
+  </style>
 </head>
+
 <body>
 
-    <h1>Ingrese los datos del carro que desea vender</h1>
-      
-        <div>
-          <span>Modelo:</span>
-          <input type="text" id="modelo" required>
-        </div>
-      
-        <div>
-          <span>Motor:</span>
-          <input type="text" id="motor" required>
-        </div>
-      
-        <br>
-        <br>
-        <div>
-          <span>Marca:</span>
-          <input type="text" id="marca" required>
-        </div>
-        <br>
-        <br>
-        <div>
-          <span>Agencia:</span>
-          <input type="text" id="agencia" required>
-        </div>
+  <h1 id="title">Ingrese los datos del carro que desea vender</h1>
+
+  <div class="container">
 
     <div>
-    <span>Color:</span>
-    <input type="text" id="color" required>
+      <span>Tipo:</span>
+      <input type="text" id="modelo" required>
+    </div>
+
+    <div>
+      <span>Motor:</span>
+      <input type="text" id="motor" required>
+    </div>
+
+
+    <div>
+      <span>Marca:</span>
+      <input type="text" id="marca" required>
     </div>
     <div>
-    <span>Asientos:</span>
-    <input type="text" id="asientos" required>
+      <span>Agencia:</span>
+      <input type="text" id="agencia" required>
     </div>
 
-        <div>
+  </div>
 
-            <span>Placa:</span>
-            <input type="text" id="placa">
-        </div>
-        
-      
+  <div class="container">
+    <div>
+      <span>Color:</span>
+      <input type="text" id="color" required>
+    </div>
+    <div>
+      <span>Asientos:</span>
+      <input type="number" id="asientos" required>
+    </div>
 
-        <br>
-        <br>
-        <br>
-        <br>
-      
-         <div>
-         <span>Anio:</span>
-         <input type="number" id="anio">
-         </div>
+    <div>
+      <span>Placa:</span>
+      <input type="text" id="placa">
+    </div>
 
-         <div>
-            <span>Precio:</span>
-            <input type="number" id="precio" min="18" max="100" required>
-          </div>
 
-        <div>
-          <span>Imagen:</span>
-          <input type="file" id="img" required>
-        </div>
-      
-        <button onclick="realizar()">Enviar</button>
-      
+    <div>
+      <span>Año:</span>
+      <input type="number" id="anio">
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div>
+      <span>Precio dólares:</span>
+      <input type="number" id="precio" min="18" max="100" required>
+    </div>
+
+    <div>
+      <span>Imagen:</span>
+      <input type="file" id="img" required>
+    </div>
+
+    <button onclick="realizar()">Enviar</button>
+
+  </div>
+
+  <br> <br> <br> <br>
+
+  <div class="container2">
+    <table class="table-fill">
+
+      <thead>
+        <tr>
+          <th class="text-left">Tipo</th>
+          <th class="text-left">Motor</th>
+          <th class="text-left">Marca</th>
+          <th class="text-left">Agencia</th>
+          <th class="text-left">Color</th>
+          <th class="text-left">Asientos</th>
+          <th class="text-left">Placa</th>
+          <th class="text-left">Año</th>
+          <th class="text-left">Precio en dólares</th>
+          <th class="text-left">Imagen</th>
+          <th class="text-left">eliminar</th>
+        </tr>
+      </thead>
+      <tbody class="table-hover" id="cuerpotabla"></tbody>
+    </table>
+  </div>
+
+
 
 </body>
+
 <script src="/peticiones"></script>
 
 <script>
-    let Carroinstacia = new Carro();
-    let imagenes64 = "";
-$("#img").change(function(){
+  let Carroinstacia = new Carro();
+
+  let imagenes64 = "";
+  $("#img").change(function () {
     readURL(this);
-});
-let reader = new FileReader();
-function readURL(input){
-    if(input.files && input.files[0]){
-        reader.onload = function(e){
-            imagenes64 = e.target.result;
-        }
+  });
+  let reader = new FileReader();
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      reader.onload = function (e) {
+        imagenes64 = e.target.result;
+      }
     }
     reader.readAsDataURL(input.files[0]);
-}
+  }
 
-const realizar = ()=>{
-        Carroinstacia.modelo = document.getElementById('modelo').value;
-        console.log(Carroinstacia.modelo)
+  const realizar = () => {
+    Carroinstacia.modelo = document.getElementById('modelo').value;
 
-        Carroinstacia.motor = document.getElementById('motor').value;
-        console.log(Carroinstacia.motor)
 
-        Carroinstacia.marca = document.getElementById('marca').value;
-        console.log(Carroinstacia.marca)
+    Carroinstacia.motor = document.getElementById('motor').value;
 
-        Carroinstacia.agencia = document.getElementById('agencia').value;
-        console.log(Carroinstacia.agencia)
 
-        Carroinstacia.color = document.getElementById('color').value;
-        console.log(Carroinstacia.color)
+    Carroinstacia.marca = document.getElementById('marca').value;
 
-        Carroinstacia.asientos = document.getElementById('asientos').value;
-        console.log(Carroinstacia.asientos)
+    Carroinstacia.agencia = document.getElementById('agencia').value;
 
-        Carroinstacia.placa = document.getElementById('placa').value;
-        console.log(Carroinstacia.placa)
-        
-        Carroinstacia.anio = document.getElementById('anio').value;
-        console.log(Carroinstacia.anio);
 
-        Carroinstacia.precio = document.getElementById('precio').value;
-        console.log(Carroinstacia.precio)
+    Carroinstacia.color = document.getElementById('color').value;
 
-        Carroinstacia.imagen = imagenes64;
-        console.log(Carroinstacia.imagen)
-        Carroinstacia.Guardar().then(function(response){
-                            alert("Guardado")
-                        },
-                        (err)=>{
-                            alert(err)
-                        })
-    }
+
+    Carroinstacia.asientos = document.getElementById('asientos').value;
+
+
+    Carroinstacia.placa = document.getElementById('placa').value;
+
+
+    Carroinstacia.anio = document.getElementById('anio').value;
+
+
+    Carroinstacia.precio = document.getElementById('precio').value;
+
+
+    Carroinstacia.imagen = imagenes64;
+
+    Carroinstacia.Guardar().then(
+      function (response) {
+        alert("Guardado con éxito");
+        document.getElementById("cuerpotabla").innerHTML = "";
+        for (var elemento in response) {
+          document.getElementById("cuerpotabla").innerHTML +=
+            "<tr><td>" +
+            response[elemento].modelo +
+            "</td>" +
+            "<td>" +
+            response[elemento].motor +
+            "</td>" +
+            "<td>" +
+            response[elemento].marca +
+            "</td>" +
+            "<td>" +
+            response[elemento].agencia +
+            "</td>" +
+            "<td>" +
+            response[elemento].color +
+            "</td>" +
+            "<td>" +
+            response[elemento].asientos +
+            "</td>" +
+            "<td>" +
+            response[elemento].placa +
+            "</td>" +
+            "<td>" +
+            response[elemento].anio +
+            "</td>" +
+            "<td>" +
+            response[elemento].precio +
+            "</td>" +
+            `<td><img src='${response[elemento].imagen}' style='height:50px'/></td>`
+
+
+
+        }
+      },
+      function (error) {
+        console.error("Failed!", error);
+        alert("Error al guardar" + error);
+      }
+    );
+  };
+
 </script>
 
 

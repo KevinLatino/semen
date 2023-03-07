@@ -1,7 +1,7 @@
 {
-  "name": "calculadora",
+  "name": "carros",
   "version": "1.0.0",
-  "description": "Sistema de compra de entradas en linea",
+  "description": "Sistema de renta de carros en linea",
   "main": "server.js",
   "autor": "11C",
   "dependencies": {

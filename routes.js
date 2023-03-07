@@ -8,5 +8,6 @@ module.exports = (app)=>{
     app.get('/peticiones', (req, res)=> {
         res.sendfile('CarClass.js');
     });
-    app.put('/api/nuevaoperacion', controllerCarro.Guardar);
+    app.put('/api/carroGuardar', controllerCarro.Guardar);
+    app.delete('/api/carroEliminar', controllerCarro.Eliminar);
 }
