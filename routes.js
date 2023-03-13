@@ -10,4 +10,7 @@ module.exports = (app)=>{
     });
     app.put('/api/carroGuardar', controllerCarro.Guardar);
     app.delete('/api/carroEliminar', controllerCarro.Eliminar);
+    app.post('/api/modificar', controllerCarro.modificar)
+    app.get("/api/cars/:id", controllerCarro.findById)
+
 }
