@@ -1,11 +1,11 @@
 let controllerCarro = require('./controllerMongo')
 
 
-module.exports = (app)=>{
-    app.get('/inicio', (req, res)=> {
+module.exports = (app) => {
+    app.get('/inicio', (req, res) => {
         res.sendfile('Carros.html');
     });
-    app.get('/peticiones', (req, res)=> {
+    app.get('/peticiones', (req, res) => {
         res.sendfile('CarClass.js');
     });
     app.put('/api/carroGuardar', controllerCarro.Guardar);
