@@ -14,7 +14,7 @@ let carroMongo = new Schema({
     placa: String,
     anio: Number,
     precio: String,
-    imagen: String
-
+    imagen: String,
+    comprado: Boolean
 });
 module.exports = mongoose.model("CARROMONGO", carroMongo);

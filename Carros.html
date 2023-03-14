@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta id="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Rentacar</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">
   </script>
   <style>
@@ -289,9 +289,11 @@
           <th class="text-left">Placa</th>
           <th class="text-left">Año</th>
           <th class="text-left">Precio en dólares</th>
+          <th class="text-left">Estado</th>
           <th class="text-left">Imagen</th>
           <th class="text-left">Eliminar</th>
           <th class="text-left">Modificar</th>
+          <th class="text-left">Comprar</th>
         </tr>
       </thead>
       <tbody class="table-hover" id="cuerpotabla"></tbody>
@@ -345,6 +347,7 @@
     table.innerHTML = "";
 
     for (const car of cars) {
+      console.log(car);
       table.innerHTML += `
         <tr>
           <td>${car.modelo}</td>
@@ -355,19 +358,24 @@
           <td>${car.asientos}</td> 
           <td>${car.placa}</td> 
           <td>${car.anio}</td> 
-          <td> ${car.precio}</td> 
+          <td>${car.precio}</td> 
+          <td>${car.comprado ? "Comprado" : "Disponible"}</td> 
 
           <td>
             <img src='${car.imagen}' style='height:50px;'>
           </td> 
 
           <td>
-            <input type='button' onclick='eliminarTabla("${car._id}")' value=Eliminar>
+            <input type='button' onclick='eliminarTabla("${car._id}")' value='Eliminar'>
           </td> 
 
-          <td class='btn'>
+          <td>
             <input type='button' class='botonesTab' value='Modificar' onclick='mostrarMod("${car._id}")'>
           </td>
+
+          <td>
+            <input type='button' ${car.comprado ? "disabled" : ""} onclick='buy("${car._id}", this)' value='Comprar'>
+          </td> 
         </tr>
       `;
     }
@@ -459,12 +467,22 @@
 
   const eliminarTabla = (obj) => {
     Carroinstacia._id = obj;
-    console.log(Carroinstacia._id);
     Carroinstacia.Eliminar().then(function (response) {
       alert('Dato eliminado exitosamente');
       location.reload()
     })
   }
+
+  const buy = (id, button) => {
+    button.disabled = true;
+
+    fetch(`/api/cars/buy/${id}`, {
+      method: "POST"
+    }).then((response) => {
+      alert('Carro comprado');
+      location.reload()
+    }).catch((error) => console.log(error));
+  };
 
   window.addEventListener("load", async () => {
     const response = await fetch("/api/cars/");

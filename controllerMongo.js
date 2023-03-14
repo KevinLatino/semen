@@ -1,8 +1,6 @@
 let Item = require("./carroMongo"); //Requiere la clase
 exports.Guardar = (req, res) => { //Exporta la siguiente funcion 
     //Crea y guarda una funcion
-
-    console.log(req.body);
     Item.create({
         //Crea el Schema
         modelo: req.body.modelo,
@@ -14,7 +12,8 @@ exports.Guardar = (req, res) => { //Exporta la siguiente funcion
         placa: req.body.placa,
         anio: req.body.anio,
         precio: req.body.precio,
-        imagen: req.body.imagen
+        imagen: req.body.imagen,
+        comprado: false,
     }, function (err, item) { //Creamos un metodo
         if (err) {
             res.send(err) //Deteccion de errores
@@ -104,6 +103,23 @@ exports.findAll = (_, res) => {
             res.send(error);
         } else {
             res.json(cars);
+        }
+    });
+};
+
+exports.buy = (req, res) => {
+    Item.update({
+        _id: req.params.id
+    },
+    {
+        $set: {
+            comprado: true
+        }
+    }, (error) => {
+        if (error) {
+            res.send(error);
+        } else {
+            res.json({}); // Express es un porquería
         }
     });
 };

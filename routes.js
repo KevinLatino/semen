@@ -13,5 +13,6 @@ module.exports = (app) => {
     app.post('/api/modificar', controllerCarro.modificar);
     app.get("/api/cars/:id", controllerCarro.findById);
     app.get("/api/cars/", controllerCarro.findAll);
+    app.post("/api/cars/buy/:id", controllerCarro.buy);
 
 }
