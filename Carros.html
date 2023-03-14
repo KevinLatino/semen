@@ -5,84 +5,85 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta id="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Rentacar</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">
   </script>
   <style>
     .forms {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: 076391;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: 076391;
+    }
 
-.forms-2 ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 400px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
+    .forms-2 ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 400px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
 
-.forms-2 li {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
+    .forms-2 li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
 
-.forms-2 li:last-child {
-  border-bottom: none;
-}
+    .forms-2 li:last-child {
+      border-bottom: none;
+    }
 
-.forms-2 input[type="text"],
-.forms-2 input[type="number"],
-.forms-2 input[type="file"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
+    .forms-2 input[type="text"],
+    .forms-2 input[type="number"],
+    .forms-2 input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
 
-.forms-2 input[type="text"]:focus,
-.forms-2 input[type="number"]:focus,
-.forms-2 input[type="file"]:focus {
-  outline: none;
-  border-color: #0077ff;
-}
+    .forms-2 input[type="text"]:focus,
+    .forms-2 input[type="number"]:focus,
+    .forms-2 input[type="file"]:focus {
+      outline: none;
+      border-color: #0077ff;
+    }
 
-.forms-2 input[type="button"] {
-  background-color: #0077ff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 16px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
+    .forms-2 input[type="button"] {
+      background-color: #0077ff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
 
-.forms-2 input[type="button"]:hover {
-  background-color: #0055cc;
-}
+    .forms-2 input[type="button"]:hover {
+      background-color: #0055cc;
+    }
 
-.forms-2 input[type="file"]::-webkit-file-upload-button {
-  background-color: #0077ff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
+    .forms-2 input[type="file"]::-webkit-file-upload-button {
+      background-color: #0077ff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
 
-.forms-2 input[type="file"]::-webkit-file-upload-button:hover {
-  background-color: #0055cc;
-}
+    .forms-2 input[type="file"]::-webkit-file-upload-button:hover {
+      background-color: #0055cc;
+    }
+
     .container2 {
       text-align: center;
       justify-content: center;
@@ -288,35 +289,37 @@
           <th class="text-left">Placa</th>
           <th class="text-left">Año</th>
           <th class="text-left">Precio en dólares</th>
+          <th class="text-left">Estado</th>
           <th class="text-left">Imagen</th>
           <th class="text-left">Eliminar</th>
           <th class="text-left">Modificar</th>
+          <th class="text-left">Comprar</th>
         </tr>
       </thead>
       <tbody class="table-hover" id="cuerpotabla"></tbody>
     </table>
   </div>
-<br> <br> <br>
+  <br> <br> <br>
   <div class="forms-2 forms" id="modificar-div">
     <ul>
-        <li><input type="text" name="modelo" id="modeloMod" placeholder="Modifique el tipo" required></li>
-        <li><input type="text" name="motor" id="motorMod" placeholder="Modifique el motor" required></li>
-        <li><input type="text" name="marca" id="marcaMod" placeholder="Modifique la marca" required></li>
-        <li><input type="text" name="agencia" id="agenciaMod" placeholder="Modifique la agencia" required></li>
-        <li><input type="text" name="color" id="colorMod" placeholder="Modifique el color" required></li>
-        <li><input type="number" name="asientos" id="asientosMod" placeholder="Modifique los asientos" required></li>
-        <li><input type="text" name="placa" id="placaMod" placeholder="Modifique la placa" required></li>
-        <li><input type="text" name="anio" id="anioMod" placeholder="Modifique el año" required></li>
-        <li><input type="number" name="precio" id="precioMod" placeholder="Modifique el precio" required></li>
-        <li><input type="file"  id="imgMod" required></li>
-        <li><input class="subir" type="button" value="Subir modificaciones" id="modificado"></li>
+      <li><input type="text" name="modelo" id="modeloMod" placeholder="Modifique el tipo" required></li>
+      <li><input type="text" name="motor" id="motorMod" placeholder="Modifique el motor" required></li>
+      <li><input type="text" name="marca" id="marcaMod" placeholder="Modifique la marca" required></li>
+      <li><input type="text" name="agencia" id="agenciaMod" placeholder="Modifique la agencia" required></li>
+      <li><input type="text" name="color" id="colorMod" placeholder="Modifique el color" required></li>
+      <li><input type="number" name="asientos" id="asientosMod" placeholder="Modifique los asientos" required></li>
+      <li><input type="text" name="placa" id="placaMod" placeholder="Modifique la placa" required></li>
+      <li><input type="text" name="anio" id="anioMod" placeholder="Modifique el año" required></li>
+      <li><input type="number" name="precio" id="precioMod" placeholder="Modifique el precio" required></li>
+      <li><input type="file" id="imgMod" required></li>
+      <li><input class="subir" type="button" value="Subir modificaciones" id="modificado"></li>
     </ul>
-</div>
+  </div>
 
 
-<div class="contain" id="contain">
-    
-</div>
+  <div class="contain" id="contain">
+
+  </div>
 </body>
 
 <script src="/peticiones"></script>
@@ -337,6 +340,46 @@
     }
     reader.readAsDataURL(input.files[0]);
   }
+
+  const fillTable = (cars) => {
+    const table = document.getElementById("cuerpotabla");
+
+    table.innerHTML = "";
+
+    for (const car of cars) {
+      console.log(car);
+      table.innerHTML += `
+        <tr>
+          <td>${car.modelo}</td>
+          <td>${car.motor}</td>
+          <td>${car.marca}</td> 
+          <td>${car.agencia}</td> 
+          <td>${car.color}</td> 
+          <td>${car.asientos}</td> 
+          <td>${car.placa}</td> 
+          <td>${car.anio}</td> 
+          <td>${car.precio}</td> 
+          <td>${car.comprado ? "Comprado" : "Disponible"}</td> 
+
+          <td>
+            <img src='${car.imagen}' style='height:50px;'>
+          </td> 
+
+          <td>
+            <input type='button' onclick='eliminarTabla("${car._id}")' value='Eliminar'>
+          </td> 
+
+          <td>
+            <input type='button' class='botonesTab' value='Modificar' onclick='mostrarMod("${car._id}")'>
+          </td>
+
+          <td>
+            <input type='button' ${car.comprado ? "disabled" : ""} onclick='buy("${car._id}", this)' value='Comprar'>
+          </td> 
+        </tr>
+      `;
+    }
+  };
 
   const realizar = () => {
     Carroinstacia.modelo = document.getElementById('modelo').value;
@@ -370,42 +413,7 @@
     Carroinstacia.Guardar().then(
       function (response) {
         alert("Guardado con éxito");
-        document.getElementById("cuerpotabla").innerHTML = "";
-        for (var elemento in response) {
-          document.getElementById("cuerpotabla").innerHTML +=
-            "<tr><td>" +
-            response[elemento].modelo +
-            "</td>" +
-            "<td>" +
-            response[elemento].motor +
-            "</td>" +
-            "<td>" +
-            response[elemento].marca +
-            "</td>" +
-            "<td>" +
-            response[elemento].agencia +
-            "</td>" +
-            "<td>" +
-            response[elemento].color +
-            "</td>" +
-            "<td>" +
-            response[elemento].asientos +
-            "</td>" +
-            "<td>" +
-            response[elemento].placa +
-            "</td>" +
-            "<td>" +
-            response[elemento].anio +
-            "</td>" +
-            "<td>" +
-            response[elemento].precio +
-            "</td>" +
-            `<td><img src='${response[elemento].imagen}' style='height:50px'/></td>`+
-            '<td><input type="button" onclick="eliminarTabla(\''+response[elemento]._id+'\')" value="Eliminar"></td>'+
-        '<td class="btn"><input type="button" class="botonesTab" value="Modifica" onclick="mostrarMod(\''+response[elemento]._id+'\')" /td>'
-
-        
-        }
+        location.reload()
       },
       function (error) {
         console.error("Failed!", error);
@@ -413,86 +421,75 @@
       }
     );
   };
-  
-  const mostrarMod = async (obj)=>{
 
-// Motor:
+  const mostrarMod = async (id) => {
+    const response = await fetch(`/api/cars/${id}`);
+    const json = await response.json();
 
-document.getElementById('modificado').addEventListener('click',()=>{
-Carroinstacia._id = obj
-Carroinstacia.modelo = document.getElementById('modeloMod').value
-console.log(Carroinstacia.modelo)
-Carroinstacia.motor = document.getElementById('motorMod').value
-console.log(Carroinstacia.motor)
-Carroinstacia.marca = document.getElementById('marcaMod').value;
-console.log(Carroinstacia.marca)
-Carroinstacia.agencia = document.getElementById('agenciaMod').value
-console.log(Carroinstacia.agencia)
-Carroinstacia.color = document.getElementById('colorMod').value
-console.log(Carroinstacia.color)
-Carroinstacia.asientos = document.getElementById('asientosMod').value
-console.log(Carroinstacia.asientos)
-Carroinstacia.placa = document.getElementById('placaMod').value
-console.log(Carroinstacia.placa)
-Carroinstacia.anio = document.getElementById('anioMod').value
-console.log(Carroinstacia.anio)
-Carroinstacia.precio = document.getElementById('precioMod').value
-console.log(Carroinstacia.precio)
-Carroinstacia.imagen = imagenes64
-console.log(Carroinstacia.imagen)
-Carroinstacia.modificar().then(function(response){
-    alert('Modificado')
-   location.reload()
-})
-})
-}
+    document.getElementById("modeloMod").value = json["modelo"];
+    document.getElementById("motorMod").value =  json["motor"];
+    document.getElementById("marcaMod").value =  json["marca"];
+    document.getElementById("agenciaMod").value =  json["agencia"];
+    document.getElementById("colorMod").value =  json["color"];
+    document.getElementById("asientosMod").value =  json["asientos"];
+    document.getElementById("placaMod").value =  json["placa"];
+    document.getElementById("anioMod").value =  json["anio"];
+    document.getElementById("precioMod").value =  json["precio"];
 
-const eliminarTabla = (obj) => {
-    Carroinstacia._id = obj;
-    console.log(Carroinstacia._id);
-    Carroinstacia.Eliminar().then(function (response){
-
-      alert('Dato eliminado exitosamente');
-
-      document.getElementById("cuerpotabla").innerHTML = "";
-        for (var elemento in response) {
-          document.getElementById("cuerpotabla").innerHTML +=
-            "<tr><td>" +
-            response[elemento].modelo +
-            "</td>" +
-            "<td>" +
-            response[elemento].motor +
-            "</td>" +
-            "<td>" +
-            response[elemento].marca +
-            "</td>" +
-            "<td>" +
-            response[elemento].agencia +
-            "</td>" +
-            "<td>" +
-            response[elemento].color +
-            "</td>" +
-            "<td>" +
-            response[elemento].asientos +
-            "</td>" +
-            "<td>" +
-            response[elemento].placa +
-            "</td>" +
-            "<td>" +
-            response[elemento].anio +
-            "</td>" +
-            "<td>" +
-            response[elemento].precio +
-            "</td>" +
-            `<td><img src='${response[elemento].imagen}' style='height:50px'/></td>`+
-            '<td><input type="button" onclick="eliminarTabla(\''+response[elemento]._id+'\')" value="Eliminar"></td>'+
-            '<td class="btn"><input type="button" class="botonesTab" value="mostrarMod" onclick="mostrarMod(\''+response[elemento]._id+'\')" /td>'
-
-        }
+    document.getElementById('modificado').addEventListener('click', () => {
+      Carroinstacia._id = id
+      Carroinstacia.modelo = document.getElementById('modeloMod').value
+      console.log(Carroinstacia.modelo)
+      Carroinstacia.motor = document.getElementById('motorMod').value
+      console.log(Carroinstacia.motor)
+      Carroinstacia.marca = document.getElementById('marcaMod').value;
+      console.log(Carroinstacia.marca)
+      Carroinstacia.agencia = document.getElementById('agenciaMod').value
+      console.log(Carroinstacia.agencia)
+      Carroinstacia.color = document.getElementById('colorMod').value
+      console.log(Carroinstacia.color)
+      Carroinstacia.asientos = document.getElementById('asientosMod').value
+      console.log(Carroinstacia.asientos)
+      Carroinstacia.placa = document.getElementById('placaMod').value
+      console.log(Carroinstacia.placa)
+      Carroinstacia.anio = document.getElementById('anioMod').value
+      console.log(Carroinstacia.anio)
+      Carroinstacia.precio = document.getElementById('precioMod').value
+      console.log(Carroinstacia.precio)
+      Carroinstacia.imagen = imagenes64
+      console.log(Carroinstacia.imagen)
+      Carroinstacia.modificar().then(function (response) {
+        alert('Modificado')
+        location.reload()
+      })
     })
   }
 
-  
+  const eliminarTabla = (obj) => {
+    Carroinstacia._id = obj;
+    Carroinstacia.Eliminar().then(function (response) {
+      alert('Dato eliminado exitosamente');
+      location.reload()
+    })
+  }
+
+  const buy = (id, button) => {
+    button.disabled = true;
+
+    fetch(`/api/cars/buy/${id}`, {
+      method: "POST"
+    }).then((response) => {
+      alert('Carro comprado');
+      location.reload()
+    }).catch((error) => console.log(error));
+  };
+
+  window.addEventListener("load", async () => {
+    const response = await fetch("/api/cars/");
+    const json = await response.json();
+
+    fillTable(json);
+  });
 
 </script>
 

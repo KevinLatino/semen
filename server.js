@@ -10,7 +10,7 @@ let port = process.env.PORT || 8989;
 
 
 //Genera una peticion post que pide las operaciones
-app.configure(function(){
+app.configure(function () {
     // app.use(express.static(__dirname+'/'));
     //no se a explicado
     app.use(express.logger('dev'));
@@ -20,11 +20,11 @@ app.configure(function(){
 
 
 const mongoAtlasUri = 'mongodb+srv://prueba:prueba@cluster0.zsa7ygr.mongodb.net/?retryWrites=true&w=majority';
-try{
-    mongoose.connect(mongoAtlasUri, {useNewUrlParser: true, useUnifiedTopology: true}, () =>
+try {
+    mongoose.connect(mongoAtlasUri, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
         console.log("connected"));
 }
-catch (error){
+catch (error) {
     console.log("could not connect");
 }
 const dbConnection = mongoose.connection;
@@ -34,8 +34,8 @@ dbConnection.once("open", () => console.log("Connected to DB!"));
 
 let bodyParser = require('body-parser');
 let { json } = require('body-parser');
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended:true}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 require('./routes.js')(app)
 
 
