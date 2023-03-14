@@ -339,6 +339,40 @@
     reader.readAsDataURL(input.files[0]);
   }
 
+  const fillTable = (cars) => {
+    const table = document.getElementById("cuerpotabla");
+
+    table.innerHTML = "";
+
+    for (const car of cars) {
+      table.innerHTML += `
+        <tr>
+          <td>${car.modelo}</td>
+          <td>${car.motor}</td>
+          <td>${car.marca}</td> 
+          <td>${car.agencia}</td> 
+          <td>${car.color}</td> 
+          <td>${car.asientos}</td> 
+          <td>${car.placa}</td> 
+          <td>${car.anio}</td> 
+          <td> ${car.precio}</td> 
+
+          <td>
+            <img src='${car.imagen}' style='height:50px;'>
+          </td> 
+
+          <td>
+            <input type='button' onclick='eliminarTabla("${car._id}")' value=Eliminar>
+          </td> 
+
+          <td class='btn'>
+            <input type='button' class='botonesTab' value='Modificar' onclick='mostrarMod("${car._id}")'>
+          </td>
+        </tr>
+      `;
+    }
+  };
+
   const realizar = () => {
     Carroinstacia.modelo = document.getElementById('modelo').value;
 
@@ -371,42 +405,7 @@
     Carroinstacia.Guardar().then(
       function (response) {
         alert("Guardado con éxito");
-        document.getElementById("cuerpotabla").innerHTML = "";
-        for (var elemento in response) {
-          document.getElementById("cuerpotabla").innerHTML +=
-            "<tr><td>" +
-            response[elemento].modelo +
-            "</td>" +
-            "<td>" +
-            response[elemento].motor +
-            "</td>" +
-            "<td>" +
-            response[elemento].marca +
-            "</td>" +
-            "<td>" +
-            response[elemento].agencia +
-            "</td>" +
-            "<td>" +
-            response[elemento].color +
-            "</td>" +
-            "<td>" +
-            response[elemento].asientos +
-            "</td>" +
-            "<td>" +
-            response[elemento].placa +
-            "</td>" +
-            "<td>" +
-            response[elemento].anio +
-            "</td>" +
-            "<td>" +
-            response[elemento].precio +
-            "</td>" +
-            `<td><img src='${response[elemento].imagen}' style='height:50px'/></td>` +
-            '<td><input type="button" onclick="eliminarTabla(\'' + response[elemento]._id + '\')" value="Eliminar"></td>' +
-            '<td class="btn"><input type="button" class="botonesTab" value="Modifica" onclick="mostrarMod(\'' + response[elemento]._id + '\')" /td>'
-
-
-        }
+        location.reload()
       },
       function (error) {
         console.error("Failed!", error);
@@ -415,12 +414,22 @@
     );
   };
 
-  const mostrarMod = async (obj) => {
+  const mostrarMod = async (id) => {
+    const response = await fetch(`/api/cars/${id}`);
+    const json = await response.json();
 
-    // Motor:
+    document.getElementById("modeloMod").value = json["modelo"];
+    document.getElementById("motorMod").value =  json["motor"];
+    document.getElementById("marcaMod").value =  json["marca"];
+    document.getElementById("agenciaMod").value =  json["agencia"];
+    document.getElementById("colorMod").value =  json["color"];
+    document.getElementById("asientosMod").value =  json["asientos"];
+    document.getElementById("placaMod").value =  json["placa"];
+    document.getElementById("anioMod").value =  json["anio"];
+    document.getElementById("precioMod").value =  json["precio"];
 
     document.getElementById('modificado').addEventListener('click', () => {
-      Carroinstacia._id = obj
+      Carroinstacia._id = id
       Carroinstacia.modelo = document.getElementById('modeloMod').value
       console.log(Carroinstacia.modelo)
       Carroinstacia.motor = document.getElementById('motorMod').value
@@ -452,48 +461,17 @@
     Carroinstacia._id = obj;
     console.log(Carroinstacia._id);
     Carroinstacia.Eliminar().then(function (response) {
-
       alert('Dato eliminado exitosamente');
-
-      document.getElementById("cuerpotabla").innerHTML = "";
-      for (var elemento in response) {
-        document.getElementById("cuerpotabla").innerHTML +=
-          "<tr><td>" +
-          response[elemento].modelo +
-          "</td>" +
-          "<td>" +
-          response[elemento].motor +
-          "</td>" +
-          "<td>" +
-          response[elemento].marca +
-          "</td>" +
-          "<td>" +
-          response[elemento].agencia +
-          "</td>" +
-          "<td>" +
-          response[elemento].color +
-          "</td>" +
-          "<td>" +
-          response[elemento].asientos +
-          "</td>" +
-          "<td>" +
-          response[elemento].placa +
-          "</td>" +
-          "<td>" +
-          response[elemento].anio +
-          "</td>" +
-          "<td>" +
-          response[elemento].precio +
-          "</td>" +
-          `<td><img src='${response[elemento].imagen}' style='height:50px'/></td>` +
-          '<td><input type="button" onclick="eliminarTabla(\'' + response[elemento]._id + '\')" value="Eliminar"></td>' +
-          '<td class="btn"><input type="button" class="botonesTab" value="mostrarMod" onclick="mostrarMod(\'' + response[elemento]._id + '\')" /td>'
-
-      }
+      location.reload()
     })
   }
 
+  window.addEventListener("load", async () => {
+    const response = await fetch("/api/cars/");
+    const json = await response.json();
 
+    fillTable(json);
+  });
 
 </script>
 
